@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+  <script src="js/viewjs.type.js"></script>
+  <script src="js/viewjs.component.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+  
+	var c = new viewjs.Component("mysite", {b1:viewjs.getComponent("checkbox").set("label","hello").set("checked",true), b2:viewjs.getComponent("checkbox").set("label","blub")});
+	
+	//alert(c.get());
+
+    $("body").append( viewjs.createComponent("mysite", "box1").redner() );
+    $("body").append( viewjs.createComponent("mysite", "box2").set(["b1","label"],"dfdf").set(["b1","checked"],false).redner() );
+  });
+  </script>
+  
+</head>
+<body>
+  
+</body>
+</html>
