@@ -2,26 +2,49 @@
 <html>
 <head>
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery.taskbar.css" />
+    
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   
   <script src="js/viewjs.type.js"></script>
   <script src="js/viewjs.component.js"></script>
+  <script src="js/jquery.taskbar.js"></script>
   
   <script>
+  
   $(document).ready(function() {
   
 	var c = new viewjs.Component("mysite", {b1:viewjs.getComponent("checkbox").set("label","hello").set("checked",true), b2:viewjs.getComponent("checkbox").set("label","blub")});
 	
+	new viewjs.Component("dashboard_button", {button:viewjs.getComponent("button").set("label","Klick mich"), nl:viewjs.getComponent("newline")});
+	new viewjs.Component("dashboard_group", {b1:viewjs.getComponent("dashboard_button")});
+	
 	//alert(c.get());
 
     $("body").append( viewjs.createComponent("mysite", "box1").redner() );
-    $("body").append( viewjs.createComponent("mysite", "box2").set(["b1","label"],"dfdf").set(["b1","checked"],false).redner() );
+    //$("body").append( viewjs.createComponent("mysite", "box2").set(["b1","label"],"dfdf").set(["b1","checked"],false).redner() );
+    
+    //$("body").append( viewjs.createComponent("Dialog", "diag").redner() );
+    $("body").append( viewjs.createComponent("Dialog", "diag").set('title','ddf').set("uiclass","taskbar-dialog").set("content",viewjs.createComponent("LinearLayoutV", "box3").add(viewjs.createComponent("button", "button1").set("label","klicken").set("cb",function() {alert("geklickt");})).add(viewjs.createComponent("button", "button2")).add(viewjs.createComponent("button", "button3"))).redner() );
+    
+    viewjs.finishUp();
+    
+    $.getScript("ajax/test.js", function(data, textStatus, jqxhr) {
+   console.log(data); //data returned
+   console.log(textStatus); //success
+   console.log(jqxhr.status); //200
+   console.log('Load was performed.');
+});
   });
   </script>
   
 </head>
 <body>
   
+<div id="taskbar" style="width: 220px; position:relative; float:right; z-index: 3000; border: 1px solid black">
+    Taskbar
+</div>
+
 </body>
 </html>

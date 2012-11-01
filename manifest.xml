@@ -1,0 +1,14 @@
+<package>
+  <description brief="viewjs">
+
+     viewjs
+
+  </description>
+  <author>josh</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/viewjs</url>
+
+</package>
+
+
